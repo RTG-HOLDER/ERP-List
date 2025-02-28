@@ -3,7 +3,7 @@
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Roblox ERP Dictionary</title>
+    <title>ERP Account List</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +17,6 @@
             margin: 0;
             padding-top: 60px;
             overflow: hidden;
-            position: relative;
         }
 
         .container {
@@ -42,70 +41,41 @@
             text-shadow: 0 0 20px red;
         }
 
-        .top-buttons {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .nav-btn {
-            background: rgba(255, 0, 0, 0.8);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 5px;
-            box-shadow: 0 0 10px red;
-            transition: background 0.2s, transform 0.1s;
-        }
-
-        .nav-btn:hover {
-            background: rgba(255, 50, 50, 1);
-            transform: scale(1.05);
-        }
-
-        .erp-account {
-            margin-bottom: 10px;
+        .account-list {
+            text-align: left;
+            max-height: 60vh;
+            overflow-y: auto;
             padding: 10px;
             background: rgba(32, 0, 0, 0.95);
             border-radius: 8px;
             border: 2px solid #ff4444;
             text-shadow: 0 0 5px red;
             box-shadow: 0 0 10px red;
+            word-break: break-word;
         }
 
-        #erp-accounts {
-            display: none;
+        .account-list a {
+            display: block;
+            color: #ff6666;
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .account-list a:hover {
+            text-decoration: underline;
+            color: #ff9999;
         }
     </style>
 </head>
 <body>
 
-    <div class="top-buttons">
-        <button class="nav-btn" onclick="showDefinitions()">ERP Dictionary</button>
-        <button class="nav-btn" onclick="showERPAccounts()">ERP Account List</button>
-    </div>
-
     <div class='container'>
-        <h1>Roblox ERP Dictionary</h1>
-
-        <div id='definitions'></div>
-        <div id='erp-accounts' style='display: none;'>
-            <h2>ERP Account List</h2>
-            <p><strong>🚨 Warning:</strong> These accounts are linked to ERP activity and should be reported.</p>
-            <div id="erp-account-list"></div>
-        </div>
+        <h1>ERP Account List</h1>
+        <div class="account-list" id="erp-account-list"></div>
     </div>
 
     <script>
-        const definitions = [
-            { number: 1, term: "ERP", synonyms: ["Sex", "Erotic Roleplay"], definition: "Erotic role-play (ERP) refers to sexually explicit interactions between users on Roblox, often conducted through chat messages or in private games. These activities can include detailed sexual descriptions, simulated intercourse, and suggestive behaviors, making them a violation of Roblox’s ToS. ERP is frequently exploited by predators to engage in inappropriate interactions with minors, posing significant safety risks." }
-        ];
-
         const erpAccountsText = `
 https://www.roblox.com/users/5247297872/profile
 https://www.roblox.com/users/7824360171/profile
@@ -11027,45 +10997,22 @@ https://www.roblox.com/users/8057147394/profile
 https://www.roblox.com/users/3736957625/profile
         `;
 
-        const container = document.getElementById('definitions');
-        const accountContainer = document.getElementById('erp-accounts');
         const listContainer = document.getElementById('erp-account-list');
-
-        function showDefinitions() {
-            container.style.display = 'block';
-            accountContainer.style.display = 'none';
-        }
-
-        function showERPAccounts() {
-            container.style.display = 'none';
-            accountContainer.style.display = 'block';
-            renderERPAccounts();
-        }
-
-        function renderDefinitions() {
-            container.innerHTML = '';
-
-            definitions.forEach(({ number, term, definition }) => {
-                const defElement = document.createElement('div');
-                defElement.className = 'erp-account';
-                defElement.innerHTML = `<span>#${number}</span> <strong>${term}</strong><p>${definition}</p>`;
-                container.appendChild(defElement);
-            });
-        }
 
         function renderERPAccounts() {
             listContainer.innerHTML = "";
             erpAccountsText.trim().split("\n").forEach(link => {
                 if (link.trim() !== "") {
-                    const accountElement = document.createElement('div');
-                    accountElement.className = 'erp-account';
-                    accountElement.innerHTML = `<a href="${link.trim()}" target="_blank">${link.trim()}</a>`;
+                    const accountElement = document.createElement('a');
+                    accountElement.href = link.trim();
+                    accountElement.target = "_blank";
+                    accountElement.innerText = link.trim();
                     listContainer.appendChild(accountElement);
                 }
             });
         }
 
-        renderDefinitions();
+        renderERPAccounts();
     </script>
 
 </body>
