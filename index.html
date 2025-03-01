@@ -5,6 +5,38 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>ERP Account List</title>
     <style>
+
+                /* 🔥 Navigation Buttons */
+.top-buttons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px red;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 50, 50, 1);
+    transform: scale(1.05);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+        
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(-45deg, #200000, #400000, #200000);
@@ -100,6 +132,14 @@
 <body>
 
     <div class='container'>
+                    
+        <!-- 🔥 Navigation Buttons (Move this ABOVE the container) -->
+<div class="top-buttons">
+    <button class="nav-btn" onclick="window.location.href='https://rtg-holder.github.io/ERP-Avatars/'">ERP Avatars</button>
+    <button class="nav-btn" onclick="window.location.href='https://rtg-holder.github.io/ERP-Definitions-MOBILE/'">ERP Definition Mobile</button>
+    <button class="nav-btn" onclick="window.location.href='https://rtg-holder.github.io/ERP-Definitions/'">ERP Definitions</button>
+</div>
+        
         <h1>ERP Account List</h1>
         <div class="account-list" id="erp-account-list"></div>
     </div>
