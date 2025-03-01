@@ -36,8 +36,9 @@
 
         .account-list {
             text-align: left;
-            max-height: 60vh;
-            overflow-y: auto;
+            max-height: 60vh; /* Limits height so scrolling works */
+            overflow-y: auto; /* Enables scrolling inside the box */
+            overflow-x: hidden; /* Prevents horizontal scroll */
             padding: 10px;
             background: rgba(32, 0, 0, 0.95);
             border-radius: 8px;
